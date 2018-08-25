@@ -1,0 +1,38 @@
+<div class="card text-center col-11 col-lg-6 c mx-auto mt-5">
+    <div class="card-body">
+        <select [(ngModel)]="country.name" (change)="getCountry(country.name)" class="form-control form-control-lg">
+            <option *ngIf="country.name === null" selected hidden>Please choose a country</option>
+            <option *ngFor="let item of countries">{{item.name}}</option>
+        </select>
+
+        <h1 *ngIf="!country.name; else noCountry" class="card-title mt-3">You not selected any country yet.</h1>
+        <ng-template #noCountry>
+            <h1 class="card-title mt-3">Your Choice: {{country.name}}</h1>
+            <section class="mx-auto col-12 col-md-8">
+                <h3 class="card-subtitle text-muted mb-2 mt-3">Country's Data</h3>
+                <table class="table">
+                    <tr>
+                        <th>Area:</th>
+                        <td>{{country.area}}</td>
+                    </tr>
+                    <tr>
+                        <th>Continent: </th>
+                        <td>{{country.subregion}}</td>
+                    </tr>
+                    <tr>
+                        <th>Population: </th>
+                        <td>{{country.population}}</td>
+                    </tr>
+                    <tr>
+                        <th>Language: </th>
+                        <td>{{country.language}}</td>
+                    </tr>
+                    <tr>
+                        <th>Flag: </th>
+                        <td><img src="{{country.flag}}" class="img-fluid img-thumbnail border"/></td>
+                    </tr>
+                </table>
+            </section>
+        </ng-template>
+    </div>
+</div>
